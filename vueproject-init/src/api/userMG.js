@@ -1,8 +1,25 @@
 import axios from 'axios';
 import { loginreq, req } from './axiosFun';
+import request from '@/api/request';
 
+//登陆方法
+export function login(username,password) {
+    const data = {
+        username,
+        password,
+    }
+    return request({
+        url: '/api/login',
+        headers : {
+            //用于请求头中，是否去localstorage中获取token
+            isToken : false
+        },
+        method: 'post',
+        data: data
+    })
+}
 // 登录接口 
-export const login = (params) => { return loginreq("post", "/api/login", params) };
+//export const login = (params) => { return loginreq("post", "/api/login", params) };
 // 获取用户菜单
 export const menu = (params) => { return axios.get("/api/menu?&token=" + localStorage.getItem('logintoken')).then(res => res.data) };
 // 退出接口

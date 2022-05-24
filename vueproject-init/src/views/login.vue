@@ -116,12 +116,14 @@ export default {
           // })
         
       //login(this.ruleForm).
-      this.axios.get('/api/login',{params:
-        {
-          'username': this.ruleForm.username,
-          'password': this.ruleForm.password,
-        }
-        }).
+      // this.axios.get('/api/login',{params:
+      //   {
+      //     'username': this.ruleForm.username,
+      //     'password': this.ruleForm.password,
+      //   }
+      //   }).
+
+      login(this.ruleForm.username, this.ruleForm.password).
         then(res => {
         console.log(res)
         if(res.data.code == 200){
