@@ -18,5 +18,18 @@ export default new Vuex.Store({
             state.user = "";
             localStorage.setItem("userInfo", "");
         },
+    // 退出系统
+    LogOut({ state }) {
+    return new Promise((resolve, reject) => {
+      logout(state.user).then(() => {
+        state.user = "";
+        localStorage.setItem("userInfo", "");
+        removeToken()
+        resolve()
+      }).catch(error => {
+        reject(error)
+      })
+    })
+  },
     }
 })
