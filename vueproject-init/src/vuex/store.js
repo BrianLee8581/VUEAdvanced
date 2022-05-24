@@ -17,6 +17,6 @@ export default new Vuex.Store({
         logout(state, user) {
             state.user = "";
             localStorage.setItem("userInfo", "");
-        }
+        },
     }
 })
