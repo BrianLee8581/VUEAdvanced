@@ -306,13 +306,10 @@ export default {
       this.editFormVisible = true //显示编辑界面
       if (row != undefined && row != 'undefined') {
         this.title = '修改用户'
-        this.editForm.userId = row.userId
-        this.editForm.userName = row.userName
-        this.editForm.userRealName = row.userRealName
-        this.editForm.roleId = row.roleId
-        this.editForm.userMobile = row.userMobile
-        this.editForm.userEmail = row.userEmail
-        this.editForm.userSex = row.userSex
+        this.editForm.id = row.id
+        this.editForm.account = row.account
+        this.editForm.password = row.passowrd
+        this.editForm.status = row.status
       } else {
         this.title = '添加用户'
         this.editForm.id = ''
@@ -440,7 +437,7 @@ export default {
           // 删除
           userDelete(row.id)
             .then(res => {
-              if (res.success) {
+             if (res.data.code == 200) {
                 this.$message({
                   type: 'success',
                   message: '数据已删除!'

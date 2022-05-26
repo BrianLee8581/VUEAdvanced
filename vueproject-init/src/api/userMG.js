@@ -29,7 +29,7 @@ export function userList(parameter){
       method: 'get'
     })
   }
-// 保存用户
+// 保存和编辑用户
 export function userSave(parameter){
     return request({
       url: '/api/rbacManager/manager',
@@ -41,3 +41,15 @@ export function userSave(parameter){
       data:parameter
     })
   }
+
+  // 删除用户
+export function userDelete(parameter){
+  return request({
+    url: '/api/rbacManager/manager/'+parameter,
+    headers: {
+      //用于请求头中 是否去localstorage中获取token
+      isToken: true
+    },
+    method: 'delete',
+  })
+}
